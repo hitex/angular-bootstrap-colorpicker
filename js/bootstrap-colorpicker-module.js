@@ -478,6 +478,10 @@ angular.module('colorpicker.module', [])
           var documentMousedownHandler = function() {
             hideColorpickerTemplate();
           };
+		  
+		  var documentMouseWheelHandler = function() {
+            hideColorpickerTemplate();
+          };
           
           var showColorpickerTemplate = function() {
 
@@ -491,6 +495,10 @@ angular.module('colorpicker.module', [])
                 // register global mousedown event to hide the colorpicker
                 $document.on('mousedown', documentMousedownHandler);
               }
+			  
+			  if (attrs.colorpickerCloseOnMouseWheel === true) {
+				$document.on('wheel', documentMouseWheelHandler);
+			  }
 
               if (attrs.colorpickerIsOpen) {
                 $scope[attrs.colorpickerIsOpen] = true;
@@ -528,6 +536,10 @@ angular.module('colorpicker.module', [])
               emitEvent('colorpicker-closed');
               // unregister the global mousedown event
               $document.off('mousedown', documentMousedownHandler);
+			  
+			  if (attrs.colorpickerCloseOnMouseWheel === true) {
+				$document.off('wheel', documentMouseWheelHandler);
+			  }
 
               if (attrs.colorpickerIsOpen) {
                 $scope[attrs.colorpickerIsOpen] = false;

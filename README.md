@@ -80,3 +80,9 @@ Auto hiding the color picker when a color has been selected
 ```html
 <input colorpicker colorpicker-close-on-select type="text" ng-model="your_model" />
 ```
+
+Auto hiding the color picker on any mouse wheel event
+```html
+<input colorpicker colorpicker-close-on-mouse-wheel type="text" ng-model="your_model" />
+```
+
